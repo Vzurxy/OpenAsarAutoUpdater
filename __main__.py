@@ -68,6 +68,9 @@ for name in discord_apps:
             app_path = f"{discord_path}\{folder.name}"
             break
 
+    if app_path == None:
+        print(f"We couldn't find an app folder for {name}.")
+
     print(f"Killing {name} processses...")
 
     for process in (
