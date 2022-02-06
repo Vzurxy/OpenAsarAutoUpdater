@@ -23,8 +23,13 @@ def get_release_tag():
 current_tag = None
 latest_tag = get_release_tag()
 
-with open("latest.txt", "r") as file:
-    current_tag = file.read()
+if not path.exists("latest.txt"):
+    with open("latest.txt", "w") as f:
+        pass
+
+
+with open("latest.txt", "r") as f:
+    current_tag = f.read()
 
 
 if current_tag == get_release_tag():
@@ -38,7 +43,6 @@ else:
         The latest version is: {latest_tag}.
     """
     )
-
 
 app_data = path.expandvars(r"%LOCALAPPDATA%")
 discord_apps = [
