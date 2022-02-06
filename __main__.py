@@ -19,8 +19,6 @@ def get_release_tag():
 current_tag = None
 latest_tag = get_release_tag()
 
-# Check if d335ad5
-
 with open("latest.txt", "r") as file:
     current_tag = file.read()
 
@@ -31,7 +29,7 @@ if current_tag == get_release_tag():
 else:
     print(f"""
         Not up to date.
-        You have OpenAsar version: {current_tag}.
+        You have OpenAsar version: {"Not saved yet" if len(current_tag) == 0 else current_tag}.
         The latest version is: {latest_tag}.
     """)
 
@@ -67,8 +65,10 @@ for name in discord_apps:
     print(f"Updated {name} using OpenAsar at {app_path}\\app.asar")
     print("Please reopen Discord!")
 
+
 with open("latest.txt", "w") as f:
     f.write(latest_tag)
     pass
+
 
 print(f"Updated latest tag to {latest_tag}.")
